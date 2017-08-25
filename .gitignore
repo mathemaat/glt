@@ -1,2 +1,4 @@
 *.pyc
 
+glt/local-settings.ini
+
