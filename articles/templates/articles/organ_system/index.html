@@ -1,0 +1,8 @@
+{% extends "static/index.html" %}
+
+{% block main %}
+  {% for organ_system in object_list %}
+    <p>{{ organ_system.description }}</p>
+  {% endfor %}
+{% endblock %}
+
