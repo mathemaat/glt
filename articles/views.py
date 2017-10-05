@@ -2,7 +2,11 @@
 from __future__ import unicode_literals
 
 from django.http import HttpResponse
+from django.views import generic
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the articles index.")
+from models import Organ
+
+class OrganDetailView(generic.DetailView):
+  model = Organ
+  template_name = 'articles/organ/detail.html'
 
