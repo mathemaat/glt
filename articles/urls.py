@@ -10,6 +10,8 @@ urlpatterns = [
   url(r'^organ-systems/$', views.OrganSystemIndexView.as_view(), name='organ_system_index'),
   # process
   url(r'^processes/$', views.ProcessIndexView.as_view(), name='process_index'),
+  # scope
+  url(r'^scopes/$', views.ScopeIndexView.as_view(), name='scope_index'),
   # topics
   url(r'^topics/$', views.TopicIndexView.as_view(), name='topic_index'),
   # e.g. organs/24/brain

@@ -1,0 +1,8 @@
+{% extends "outline.html" %}
+
+{% block body %}
+  {% for scope in object_list %}
+    <p>{{ scope.description }}</p>
+  {% endfor %}
+{% endblock %}
+

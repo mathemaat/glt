@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.views import generic
 
-from models import Field, Organ, OrganSystem, Process, Topic
+from models import Field, Organ, OrganSystem, Process, Scope, Topic
 
 class FieldIndexView(generic.ListView):
   model = Field
@@ -17,6 +17,10 @@ class OrganSystemIndexView(generic.ListView):
 class ProcessIndexView(generic.ListView):
   model = Process
   template_name = 'articles/process/index.html'
+
+class ScopeIndexView(generic.ListView):
+  model = Scope
+  template_name = 'articles/scope/index.html'
 
 class TopicIndexView(generic.ListView):
   model = Topic
