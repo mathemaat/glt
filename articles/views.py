@@ -4,7 +4,11 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.views import generic
 
-from models import Organ, OrganSystem, Topic
+from models import Field, Organ, OrganSystem, Topic
+
+class FieldIndexView(generic.ListView):
+  model = Field
+  template_name = 'articles/field/index.html'
 
 class OrganSystemIndexView(generic.ListView):
   model = OrganSystem
