@@ -1,0 +1,8 @@
+{% extends "outline.html" %}
+
+{% block body %}
+  {% for topic in object_list %}
+    <p>{{ topic.description }}</p>
+  {% endfor %}
+{% endblock %}
+
