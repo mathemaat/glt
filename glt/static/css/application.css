@@ -3,4 +3,31 @@ body, div, p, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, te
   margin: 0px;
   padding: 0px; }
 
+body {
+  display: block;
+  padding: 0px 8px; }
+
+ul {
+  list-style: none; }
+
+br.clear {
+  clear: both; }
+
+#header {
+  margin: 8px 0px; }
+  #header h1 {
+    margin-bottom: 8px; }
+  #header #menu li {
+    float: left; }
+    #header #menu li a {
+      font-weight: bold;
+      text-decoration: none;
+      display: block;
+      padding: 2px 4px; }
+      #header #menu li a:hover {
+        text-decoration: underline; }
+
+#footer {
+  margin: 8px 0px; }
+
 /*# sourceMappingURL=application.css.map */
