@@ -8,6 +8,15 @@
   <body>
     <div id="header">
       <h1>Global Laboratory Solutions</h1>
+      <div id="menu">
+        <ul>
+          <li><a href="{% url 'articles:field_index' %}">Fields</a></li>
+          <li><a href="{% url 'articles:organ_system_index' %}">Organ systems</a></li>
+          <li><a href="{% url 'articles:process_index' %}">Processes</a></li>
+          <li><a href="{% url 'articles:scope_index' %}">Scopes</a></li>
+          <li><a href="{% url 'articles:topic_index' %}">Topics</a></li>
+        </ul>
+      </div>
     </div>
     <div id="body">
       {% block body %} CONTENT HERE {% endblock %}
