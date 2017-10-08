@@ -14,6 +14,10 @@ class OrganSystemIndexView(generic.ListView):
   model = OrganSystem
   template_name = 'articles/organ_system/index.html'
 
+class OrganSystemDetailView(generic.DetailView):
+  model = OrganSystem
+  template_name = 'articles/organ_system/detail.html'
+
 class ProcessIndexView(generic.ListView):
   model = Process
   template_name = 'articles/process/index.html'

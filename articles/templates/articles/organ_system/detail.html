@@ -1,0 +1,9 @@
+{% extends "outline.html" %}
+
+{% block body %}
+  {{ organsystem.description }}
+  {% for organ in organsystem.organ_set.all %}
+    <p><a href="{% url 'articles:organ_detail' organ.id 'todo' %}">{{ organ.description }}</a></p>
+  {% endfor %}
+{% endblock %}
+

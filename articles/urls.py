@@ -8,6 +8,8 @@ urlpatterns = [
   url(r'^fields/$', views.FieldIndexView.as_view(), name='field_index'),
   # organ-systems
   url(r'^organ-systems/$', views.OrganSystemIndexView.as_view(), name='organ_system_index'),
+  # e.g. organ-systems/9/reproductive-organs
+  url(r'^organ-systems/(?P<pk>[0-9]+)/(?P<slug>[\w-]+)/$', views.OrganSystemDetailView.as_view(), name='organ_system_detail'),
   # process
   url(r'^processes/$', views.ProcessIndexView.as_view(), name='process_index'),
   # scope

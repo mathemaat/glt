@@ -2,7 +2,7 @@
 
 {% block body %}
   {% for organ_system in object_list %}
-    <p>{{ organ_system.description }}</p>
+    <p><a href="{% url 'articles:organ_system_detail' organ_system.id 'todo' %}">{{ organ_system.description }}</a></p>
   {% endfor %}
 {% endblock %}
 
