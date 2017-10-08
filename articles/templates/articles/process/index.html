@@ -1,0 +1,8 @@
+{% extends "outline.html" %}
+
+{% block body %}
+  {% for process in object_list %}
+    <p>{{ process.description }}</p>
+  {% endfor %}
+{% endblock %}
+
