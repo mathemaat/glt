@@ -7,7 +7,16 @@
   </head>
   <body>
     <div id="header">
-      <h1>Global Laboratory Techniques</h1>
+      <div id="header-bar">
+        <div class="logo">
+          <img src="{% static 'img/logo.png' %}" />
+          <div class="logo-text-bottom">Keep exploring</div>
+        </div>
+        <div class="logo-text-right">
+          Global Laboratory Techniques
+        </div>
+        <br class="clear" />
+      </div>
       <div id="menu">
         <ul>
           <li><a href="{% url 'articles:field_index' %}">Fields</a></li>

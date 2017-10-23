@@ -15,19 +15,40 @@ br.clear {
 
 #header {
   margin: 8px 0px; }
-  #header h1 {
+  #header #header-bar {
+    border-bottom: 1px solid #c0c0c0;
+    padding-bottom: 8px;
     margin-bottom: 8px; }
-  #header #menu li {
-    float: left; }
-    #header #menu li a {
-      font-weight: bold;
-      text-decoration: none;
-      display: block;
-      padding: 2px 4px; }
-      #header #menu li a:hover {
-        text-decoration: underline; }
+    #header #header-bar div.logo {
+      margin-right: 8px; }
+      #header #header-bar div.logo img {
+        width: 100px; }
+    #header #header-bar div.logo, #header #header-bar div.logo-text-right {
+      float: left; }
+    #header #header-bar div.logo-text-right {
+      font-size: 20px;
+      width: 100px; }
+    #header #header-bar div.logo-text-bottom {
+      font-style: italic; }
+  #header #menu {
+    border-bottom: 1px solid #c0c0c0;
+    padding-bottom: 8px; }
+    #header #menu li {
+      float: left; }
+      #header #menu li a {
+        font-weight: bold;
+        text-decoration: none;
+        display: block;
+        padding: 2px 4px; }
+        #header #menu li a:hover {
+          text-decoration: underline; }
+
+#body {
+  min-height: 200px; }
 
 #footer {
-  margin: 8px 0px; }
+  border-top: 1px solid #c0c0c0;
+  padding-top: 8px;
+  margin-top: 8px; }
 
 /*# sourceMappingURL=application.css.map */

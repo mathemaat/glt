@@ -25,32 +25,73 @@ br.clear
 {
   margin: 8px 0px;
 
-  h1
+  #header-bar
   {
+    border-bottom: 1px solid #c0c0c0;
+    padding-bottom: 8px;
     margin-bottom: 8px;
+    
+    div.logo
+    {
+      margin-right: 8px;
+
+      img
+      {
+        width: 100px;
+      }
+    }
+    
+    div.logo, div.logo-text-right
+    {
+      float: left;
+    }
+
+    div.logo-text-right
+    {
+      font-size: 20px;
+      width: 100px;
+    }
+
+    div.logo-text-bottom
+    {
+      font-style: italic;
+    }
   }
 
-  #menu li
+  #menu
   {
-    float: left;
+    border-bottom: 1px solid #c0c0c0;
+    padding-bottom: 8px;
 
-    a
+    li
     {
-      font-weight: bold;
-      text-decoration: none;
+      float: left;
 
-      display: block;
-      padding: 2px 4px;
+      a
+      {
+        font-weight: bold;
+        text-decoration: none;
 
-      &:hover {
-        text-decoration: underline;
+        display: block;
+        padding: 2px 4px;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
 }
 
+#body
+{
+  min-height: 200px;
+}
+
 #footer
 {
-  margin: 8px 0px;
+  border-top: 1px solid #c0c0c0;
+  padding-top: 8px;
+  margin-top: 8px;
 }
 
