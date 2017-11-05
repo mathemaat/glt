@@ -1,0 +1,8 @@
+{% extends "outline.html" %}
+
+{% block body %}
+  {% for hnode in object_list %}
+    <p><a href="{% url 'hnodes:detail' hnode.id 'todo' %}">{{ hnode.description }}</a></p>
+  {% endfor %}
+{% endblock %}
+

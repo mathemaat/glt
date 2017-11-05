@@ -1,0 +1,7 @@
+{% extends "outline.html" %}
+
+{% block body %}
+  {{ hnode.description }}
+  <a href="{% url 'hnodes:full-tree' %}">Back to full tree</a>
+{% endblock %}
+

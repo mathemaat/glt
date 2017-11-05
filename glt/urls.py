@@ -22,6 +22,9 @@ urlpatterns = [
   # homepage
   url(r'', include('articles.urls')),
 
+  # hnodes
+  url(r'^hnodes/', include('hnodes.urls')),
+
   # admin site
   url(r'^admin/', admin.site.urls),
 ]
