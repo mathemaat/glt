@@ -1,7 +1,33 @@
 {% extends "outline.html" %}
 
 {% block body %}
-  {{ hnode.description }}
-  <a href="{% url 'hnodes:full-tree' %}">Back to full tree</a>
+  <section class="hnode {{ hnode.getHTMLClass }}">
+    <h2 class="page-title">{{ hnode.description }}</h2>
+    <div class="page-content">
+      <div class="node-info parent-node-info">
+        <h4>Parent nodes</h4>
+        {% if hnode.isRoot %}
+          <span>This is the root node. This node doesn't have any parents.</span>
+        {% else %}
+          <span>To do: parent nodes here...</span>
+        {% endif %}
+      </div>
+      <div class="node-info sibling-node-info">
+        <h4>Sibling nodes</h4>
+        <span>To do: sibling nodes here (if any)</span>
+      </div>
+      <div class="node-info child-node-info">
+        <h4>Child nodes</h4>
+        {% if hnode.isLeaf %}
+          <span>This is a leaf node. This node doesn't have any children.</span>
+        {% else %}
+          <span>To do: child nodes here...</span>
+        {% endif %}
+      </div>
+    </div>
+    <div class="page-actions">
+      <a href="{% url 'hnodes:full-tree' %}">Back to full tree</a>
+    </div>
+  </section>
 {% endblock %}
 

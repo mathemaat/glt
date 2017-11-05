@@ -14,3 +14,17 @@ class HNode(models.Model):
   def __str__(self):
     return self.description
 
+  def isRoot(self):
+    return self.vleft == 1
+
+  def isLeaf(self):
+    return self.vleft + 1 == self.vright
+
+  def getHTMLClass(self):
+    if (self.isRoot()):
+      return 'root'
+    elif (self.isLeaf()):
+      return 'leaf'
+    else:
+      return 'node'
+

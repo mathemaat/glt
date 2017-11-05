@@ -86,6 +86,18 @@ br.clear
 #body
 {
   min-height: 200px;
+
+  h2.page-title,
+  div.page-content,
+  div.page-actions
+  {
+    margin-bottom: 8px;
+  }
+
+  h2.page-title
+  {
+    font-weight: bold;
+  }
 }
 
 #footer
@@ -93,5 +105,39 @@ br.clear
   border-top: 1px solid #c0c0c0;
   padding-top: 8px;
   margin-top: 8px;
+}
+
+/* App hnode */
+section.hnode
+{
+  &.root
+  {
+    color: #604020;
+  }
+
+  &.leaf
+  {
+    color: #208020;
+  }
+
+  div.node-info
+  {
+    margin-bottom: 4px;
+
+    &:last-child
+    {
+      margin-bottom: 0px;
+    }
+
+    h4
+    {
+      font-weight: bold;
+    }
+
+    span
+    {
+      font-style: italic;
+    }
+  }
 }
 
