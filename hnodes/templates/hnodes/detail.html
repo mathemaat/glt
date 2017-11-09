@@ -32,7 +32,17 @@
         {% if hnode.isLeaf %}
           <span>This is a leaf node. This node doesn't have any children.</span>
         {% else %}
-          <span>To do: child nodes here...</span>
+          <ul>
+            {% for child in hnode.getAllChildren %}
+              <li>
+                <a href="{% url 'hnodes:detail' child.id 'todo' %}">{{ child.description }}</a>
+              </li>
+            {% empty %}
+              <li>
+                <span>Oops... Something went wrong</span>
+              </li>
+            {% endfor %}
+          </ul>
         {% endif %}
       </div>
     </div>

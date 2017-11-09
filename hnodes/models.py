@@ -29,6 +29,25 @@ class HNode(models.Model):
     params = { 'id': int(self.id) }
     return HNode.objects.raw(query, params)
 
+  def getAllChildren(self):
+    query = ("SELECT c.*, COUNT(p.id) - sdepth.depth - 1 as 'depth' "
+             "FROM hnodes_hnode c "
+             "INNER JOIN hnodes_hnode p ON c.vleft BETWEEN p.vleft AND p.vright "
+             "INNER JOIN hnodes_hnode s ON c.vleft BETWEEN s.vleft AND s.vright AND s.id = %(id)s "
+             "CROSS JOIN "
+             "("
+               "SELECT c.id, COUNT(p.id) - 1 as 'depth' "
+               "FROM hnodes_hnode c "
+               "INNER JOIN hnodes_hnode p ON c.vleft BETWEEN p.vleft AND p.vright "
+               "WHERE c.id = %(id)s "
+               "GROUP BY c.id"
+             ") as sdepth "
+             "GROUP BY c.id "
+             "HAVING depth = 1 "
+             "ORDER BY c.description")
+    params = { 'id': int(self.id) }
+    return HNode.objects.raw(query, params)
+
   def getHTMLClass(self):
     if (self.isRoot()):
       return 'root'
