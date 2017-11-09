@@ -20,6 +20,15 @@ class HNode(models.Model):
   def isLeaf(self):
     return self.vleft + 1 == self.vright
 
+  def getAllParents(self):
+    query = ('SELECT p.* '
+             'FROM hnodes_hnode c '
+             'INNER JOIN hnodes_hnode p ON c.vleft BETWEEN p.vleft AND p.vright '
+             'WHERE c.id = %(id)s '
+             'ORDER BY p.vleft')
+    params = { 'id': int(self.id) }
+    return HNode.objects.raw(query, params)
+
   def getHTMLClass(self):
     if (self.isRoot()):
       return 'root'

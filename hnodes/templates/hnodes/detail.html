@@ -9,7 +9,18 @@
         {% if hnode.isRoot %}
           <span>This is the root node. This node doesn't have any parents.</span>
         {% else %}
-          <span>To do: parent nodes here...</span>
+          {% for parent in hnode.getAllParents %}
+            {% if parent.id != hnode.id %}
+              <a href="{% url 'hnodes:detail' parent.id 'todo' %}">{{ parent.description }}</a>
+            {% else %}
+              <span>{{ parent.description }}</span>
+            {% endif %}
+            {% if not forloop.last %}
+              <span>&#8594;</span>
+            {% endif %}
+          {% empty %}
+            <span>Oops... Something went wrong</span>
+          {% endfor %}
         {% endif %}
       </div>
       <div class="node-info sibling-node-info">
