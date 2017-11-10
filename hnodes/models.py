@@ -20,7 +20,7 @@ class HNode(models.Model):
   def isLeaf(self):
     return self.vleft + 1 == self.vright
 
-  def getAllParents(self):
+  def getFullPath(self):
     query = ('SELECT p.* '
              'FROM hnodes_hnode c '
              'INNER JOIN hnodes_hnode p ON c.vleft BETWEEN p.vleft AND p.vright '

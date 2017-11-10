@@ -11,6 +11,18 @@ body
   padding: 0px 8px;
 }
 
+
+a
+{
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover
+  {
+    text-decoration: underline;
+  }
+}
+
 ul
 {
   list-style: none;
@@ -69,15 +81,8 @@ br.clear
 
       a
       {
-        font-weight: bold;
-        text-decoration: none;
-
         display: block;
         padding: 2px 4px;
-
-        &:hover {
-          text-decoration: underline;
-        }
       }
     }
   }
@@ -110,33 +115,33 @@ br.clear
 /* App hnode */
 section.hnode
 {
-  &.root
+  div.page-content
   {
-    color: #604020;
-  }
+    width: 480px;
 
-  &.leaf
-  {
-    color: #208020;
-  }
-
-  div.node-info
-  {
-    margin-bottom: 4px;
-
-    &:last-child
+    div.full-path
     {
-      margin-bottom: 0px;
+      div.node
+      {
+        border: 1px solid #c0c0c0;
+        padding: 8px;
+      }
     }
 
-    h4
+    div.child-nodes
+    {
+      border: 1px solid #c0c0c0;
+    }
+
+    div.down-arrow,
+    div.node
+    {
+     text-align: center;
+    }
+
+    div.node
     {
       font-weight: bold;
-    }
-
-    span
-    {
-      font-style: italic;
     }
   }
 }

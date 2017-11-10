@@ -4,47 +4,32 @@
   <section class="hnode {{ hnode.getHTMLClass }}">
     <h2 class="page-title">{{ hnode.description }}</h2>
     <div class="page-content">
-      <div class="node-info parent-node-info">
-        <h4>Parent nodes</h4>
-        {% if hnode.isRoot %}
-          <span>This is the root node. This node doesn't have any parents.</span>
-        {% else %}
-          {% for parent in hnode.getAllParents %}
-            {% if parent.id != hnode.id %}
-              <a href="{% url 'hnodes:detail' parent.id 'todo' %}">{{ parent.description }}</a>
-            {% else %}
-              <span>{{ parent.description }}</span>
-            {% endif %}
+      <div class="full-path">
+        {% for hn in hnode.getFullPath %}
+          <div class="down-arrow" />
+            <span>&#8595;</span>
+          </div>
+          <div class="node">
             {% if not forloop.last %}
-              <span>&#8594;</span>
+              <a href="{% url 'hnodes:detail' hn.id 'todo' %}">{{ hn.description }}</a>
+            {% else %}
+              <span>{{ hn.description }}</span>
             {% endif %}
-          {% empty %}
-            <span>Oops... Something went wrong</span>
+          </div>
+        {% endfor %}
+      </div>
+      {% if not hnode.isLeaf %}
+        <div class="down-arrow" />
+          <span>&#8595;</span>
+        </div>
+        <div class="child-nodes">
+          {% for hn in hnode.getAllChildren %}
+            <div class="node">
+              <a href="{% url 'hnodes:detail' hn.id 'todo' %}">{{ hn.description }}</a>
+            </div>
           {% endfor %}
-        {% endif %}
-      </div>
-      <div class="node-info sibling-node-info">
-        <h4>Sibling nodes</h4>
-        <span>To do: sibling nodes here (if any)</span>
-      </div>
-      <div class="node-info child-node-info">
-        <h4>Child nodes</h4>
-        {% if hnode.isLeaf %}
-          <span>This is a leaf node. This node doesn't have any children.</span>
-        {% else %}
-          <ul>
-            {% for child in hnode.getAllChildren %}
-              <li>
-                <a href="{% url 'hnodes:detail' child.id 'todo' %}">{{ child.description }}</a>
-              </li>
-            {% empty %}
-              <li>
-                <span>Oops... Something went wrong</span>
-              </li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
     </div>
     <div class="page-actions">
       <a href="{% url 'hnodes:full-tree' %}">Back to full tree</a>
