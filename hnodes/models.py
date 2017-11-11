@@ -44,7 +44,7 @@ class HNode(models.Model):
              ") as sdepth "
              "GROUP BY c.id "
              "HAVING depth = 1 "
-             "ORDER BY c.description")
+             "ORDER BY c.vleft")
     params = { 'id': int(self.id) }
     return HNode.objects.raw(query, params)
 
