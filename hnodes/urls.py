@@ -6,6 +6,8 @@ app_name = 'hnodes'
 urlpatterns = [
   # e.g. 15/tissue
   url(r'^(?P<pk>[0-9]+)/(?P<slug>[\w-]+)/$', views.HNodeDetailView.as_view(), name='detail'),
+  # e.g. 15/tissue/insert-child
+  url(r'^(?P<pk>[0-9]+)/(?P<slug>[\w-]+)/insert-child/$', views.insertChild, name='insert-child'),
   # e.g. node-tree
   url(r'^full-tree/$', views.HNodeListView.as_view(), name='full-tree'),
 ]

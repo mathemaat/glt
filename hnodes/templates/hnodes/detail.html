@@ -18,18 +18,23 @@
           </div>
         {% endfor %}
       </div>
-      {% if not hnode.isLeaf %}
-        <div class="down-arrow" />
-          <span>&#8595;</span>
-        </div>
-        <div class="child-nodes">
+      <div class="down-arrow" />
+        <span>&#8595;</span>
+      </div>
+      <div class="child-nodes">
+        {% if not hnode.isLeaf %}
           {% for hn in hnode.getAllChildren %}
             <div class="node">
               <a href="{% url 'hnodes:detail' hn.id 'todo' %}">{{ hn.description }}</a>
             </div>
           {% endfor %}
-        </div>
-      {% endif %}
+        {% endif %}
+        <form action="{% url 'hnodes:insert-child' hnode.id 'todo' %}" method="post">
+          {% csrf_token %}
+          <input id="hnode_description" type="text" name="description" />
+          <input type="submit" name="save" value="Add leaf node" />
+        </form>
+      </div>
     </div>
     <div class="page-actions">
       <a href="{% url 'hnodes:full-tree' %}">Back to full tree</a>
