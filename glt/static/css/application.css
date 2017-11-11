@@ -7,6 +7,9 @@ body {
   display: block;
   padding: 0px 8px; }
 
+form input[type=submit] {
+  padding: 0px 2px; }
+
 a {
   font-weight: bold;
   text-decoration: none; }
@@ -61,12 +64,26 @@ br.clear {
 
 /* App hnode */
 section.hnode div.page-content {
-  width: 480px; }
+  max-width: 800px; }
   section.hnode div.page-content div.full-path div.node {
     border: 1px solid #c0c0c0;
     padding: 8px; }
-  section.hnode div.page-content div.child-nodes {
-    border: 1px solid #c0c0c0; }
+  section.hnode div.page-content div.child-node-box {
+    border: 1px solid #c0c0c0;
+    padding: 4px; }
+    section.hnode div.page-content div.child-node-box div.child-node-box-item {
+      display: inline-block;
+      float: left;
+      height: 64px;
+      margin: 0px 4px 4px 0px;
+      padding: 2px; }
+    section.hnode div.page-content div.child-node-box div.child-node-box-item.node {
+      border: 1px solid #c0c0c0;
+      min-width: 160px;
+      max-width: 240px; }
+    section.hnode div.page-content div.child-node-box div.child-node-box-item.add-sibling form {
+      border: 1px solid #c0c0c0;
+      padding: 4px; }
   section.hnode div.page-content div.down-arrow,
   section.hnode div.page-content div.node,
   section.hnode div.page-content form {

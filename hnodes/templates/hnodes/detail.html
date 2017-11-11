@@ -21,15 +21,17 @@
       <div class="down-arrow" />
         <span>&#8595;</span>
       </div>
-      <div class="child-nodes">
+      <div class="child-node-box">
         {% if not hnode.isLeaf %}
           {% for hn in hnode.getAllChildren %}
-            <form action="{% url 'hnodes:insert-sibling-left' hn.id 'todo' %}" method="post">
-              {% csrf_token %}
-              <input id="hnode_description" type="text" name="description" />
-              <input type="submit" name="save" value="+" />
-            </form>
-            <div class="node">
+            <div class="child-node-box-item add-sibling">
+              <form class="insert-sibling-node" action="{% url 'hnodes:insert-sibling-left' hn.id 'todo' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="description" />
+                <input type="submit" name="save" value="+" />
+              </form>
+            </div>
+            <div class="child-node-box-item node">
               <a href="{% url 'hnodes:detail' hn.id 'todo' %}">{{ hn.description }}</a>
               <form action="{% url 'hnodes:delete' hn.id 'todo' %}" method="post">
                 {% csrf_token %}
@@ -37,19 +39,25 @@
               </form>
             </div>
             {% if forloop.last %}
-              <form action="{% url 'hnodes:insert-sibling-right' hn.id 'todo' %}" method="post">
-                {% csrf_token %}
-                <input id="hnode_description" type="text" name="description" />
-                <input type="submit" name="save" value="+" />
-              </form>
+              <div class="child-node-box-item add-sibling">
+                <form class="insert-sibling-node" action="{% url 'hnodes:insert-sibling-right' hn.id 'todo' %}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="description" />
+                  <input type="submit" name="save" value="+" />
+                </form>
+              </div>
             {% endif %}
           {% endfor %}
+          <br class="clear" />
+          <label for"sibling-description">Sibling description</label>
+          <input id="sibling-description" type="text" name="description" />
+        {% else %}
+          <form action="{% url 'hnodes:insert-child' hnode.id 'todo' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="description" />
+            <input type="submit" name="save" value="Insert leaf node" />
+          </form>
         {% endif %}
-        <form action="{% url 'hnodes:insert-child' hnode.id 'todo' %}" method="post">
-          {% csrf_token %}
-          <input id="hnode_description" type="text" name="description" />
-          <input type="submit" name="save" value="Add leaf node" />
-        </form>
       </div>
     </div>
     <div class="page-actions">

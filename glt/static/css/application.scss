@@ -11,6 +11,13 @@ body
   padding: 0px 8px;
 }
 
+form
+{
+  input[type=submit]
+  {
+    padding: 0px 2px;
+  }
+}
 
 a
 {
@@ -117,7 +124,7 @@ section.hnode
 {
   div.page-content
   {
-    width: 480px;
+    max-width: 800px;
 
     div.full-path
     {
@@ -128,9 +135,35 @@ section.hnode
       }
     }
 
-    div.child-nodes
+    div.child-node-box
     {
       border: 1px solid #c0c0c0;
+      padding: 4px;
+
+      div.child-node-box-item
+      {
+        display: inline-block;
+        float: left;
+        height: 64px;
+        margin: 0px 4px 4px 0px;
+        padding: 2px;
+      }
+
+      div.child-node-box-item.node
+      {
+        border: 1px solid #c0c0c0;
+        min-width: 160px;
+        max-width: 240px;
+      }
+
+      div.child-node-box-item.add-sibling
+      {
+        form
+        {
+          border: 1px solid #c0c0c0;
+          padding: 4px;
+        }
+      }
     }
 
     div.down-arrow,
