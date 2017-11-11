@@ -24,6 +24,11 @@
       <div class="child-nodes">
         {% if not hnode.isLeaf %}
           {% for hn in hnode.getAllChildren %}
+            <form action="{% url 'hnodes:insert-sibling-left' hn.id 'todo' %}" method="post">
+              {% csrf_token %}
+              <input id="hnode_description" type="text" name="description" />
+              <input type="submit" name="save" value="+" />
+            </form>
             <div class="node">
               <a href="{% url 'hnodes:detail' hn.id 'todo' %}">{{ hn.description }}</a>
               <form action="{% url 'hnodes:delete' hn.id 'todo' %}" method="post">
@@ -31,6 +36,13 @@
                 <input type="submit" name="delete" value="x" />
               </form>
             </div>
+            {% if forloop.last %}
+              <form action="{% url 'hnodes:insert-sibling-right' hn.id 'todo' %}" method="post">
+                {% csrf_token %}
+                <input id="hnode_description" type="text" name="description" />
+                <input type="submit" name="save" value="+" />
+              </form>
+            {% endif %}
           {% endfor %}
         {% endif %}
         <form action="{% url 'hnodes:insert-child' hnode.id 'todo' %}" method="post">
