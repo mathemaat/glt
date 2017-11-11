@@ -26,6 +26,10 @@
           {% for hn in hnode.getAllChildren %}
             <div class="node">
               <a href="{% url 'hnodes:detail' hn.id 'todo' %}">{{ hn.description }}</a>
+              <form action="{% url 'hnodes:delete' hn.id 'todo' %}" method="post">
+                {% csrf_token %}
+                <input type="submit" name="delete" value="x" />
+              </form>
             </div>
           {% endfor %}
         {% endif %}

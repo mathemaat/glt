@@ -39,3 +39,28 @@ def insertChild(request, pk, slug):
 
   return HttpResponseRedirect(reverse('hnodes:detail', args=(new.id, 'todo')))
 
+def delete(request, pk, slug):
+  hnode = get_object_or_404(HNode, pk=pk)
+
+  offset = hnode.vright - hnode.vleft + 1
+
+  with connection.cursor() as cursor:
+    query = ('DELETE FROM hnodes_hnode '
+             'WHERE vleft > %(vleft)s '
+             'AND vright < %(vright)s')
+    cursor.execute(query, {'vleft': hnode.vleft, 'vright': hnode.vright})
+
+    query = ('UPDATE hnodes_hnode '
+             'SET vleft = vleft - %(offset)s '
+             'WHERE vleft > %(vright)s')
+    cursor.execute(query, {'offset': offset, 'vright': hnode.vright})
+
+    query = ('UPDATE hnodes_hnode '
+             'SET vright = vright - %(offset)s '
+             'WHERE vright > %(vright)s')
+    cursor.execute(query, {'offset': offset, 'vright': hnode.vright})
+
+  hnode.delete()
+
+  return HttpResponseRedirect(reverse('hnodes:full-tree'))
+
